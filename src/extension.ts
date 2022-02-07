@@ -9,8 +9,11 @@ export function activate(context: vscode.ExtensionContext) {
         templates = templates.filter((template) => template.split(",").length === 3);
         
         if (templates.length === 0) {
-            vscode.window.showErrorMessage("No valid templates found.\nValid format <NAME,TYPE,VALUE>");
+            vscode.window.showErrorMessage("No valid templates found. Parameter format: <NAME,TYPE,VALUE>");
         }
+
+        let hasChanges = false;
+
         for (let template of templates) {
             let templateData = template.split(",");
             let templateName = templateData[0];
@@ -24,7 +27,12 @@ export function activate(context: vscode.ExtensionContext) {
             let promptResult = await vscode.window.showInputBox(options);
             if (promptResult) {
                 text = text.replaceAll(`<${template}>`, promptResult);
+                hasChanges = true;
             }
+        }
+
+        if (!hasChanges) {
+            return;
         }
 
         let invalidRange = new vscode.Range(0, 0, activeEditor.document.lineCount, 0);
