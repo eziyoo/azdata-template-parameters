@@ -2,7 +2,7 @@
 	"name": "template-parameters",
 	"displayName": "Template Parameters",
 	"description": "Resolves Template Parameters like SSMS",
-	"publisher": "Angelo Pennisi",
+	"publisher": "angelopennisi",
 	"author": {
 		"name": "Angelo Pennisi",
 		"email": "angelo.pennisi@gmail.com"
@@ -13,6 +13,7 @@
 		"vscode": "^1.39.0",
 		"azdata": "*"
 	},
+	"icon": "template-parameters.png",
 	"categories": [
 		"Other"
 	],
